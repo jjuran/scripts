@@ -63,5 +63,7 @@ sub mirror_all
 	}
 }
 
+mirror_all()  if !defined caller;
+
 1;
 
