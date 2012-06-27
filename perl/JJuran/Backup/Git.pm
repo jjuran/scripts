@@ -34,6 +34,8 @@ sub mirror_repo
 		system( @cmd ) == 0 or die "Failed to git init $mirror_dir\n";
 	}
 	
+	print "Mirroring $group/$name:\n";
+	
 	my @cmd =
 	(
 		'git',
@@ -45,6 +47,20 @@ sub mirror_repo
 	);
 	
 	system( @cmd ) == 0 or die "git push --mirror of $group/$name failed\n";
+	
+	print "\n";
+}
+
+sub mirror_all
+{
+	my @repos = glob "$var_git/*/*/.git";
+	
+	foreach my $repo ( @repos )
+	{
+		my ( $group, $name ) = $repo =~ m{ ([^/]+) / ([^/]+) / \.git $}x or die;
+		
+		mirror_repo( $group, $name );
+	}
 }
 
 1;
