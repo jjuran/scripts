@@ -1,0 +1,12 @@
+#!/bin/sh
+
+find . \
+        \( \
+                -name "*.c" -o \
+                -name "*.h" -o \
+                -name "*.cc" -o \
+                -name "*.hh" -o \
+                -name "*.hpp" \
+        \) \
+        -print0 | \
+xargs -0 /Developer/Tools/SetFile -t TEXT
