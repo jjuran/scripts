@@ -10,11 +10,11 @@ $_ = <>;
 # Drop the header
 s{^ \w+ \n =+ \n\n }{}x;
 
-# Drop link targets
-s{^ \[ .* \n}{}gmx;
-
 # Drop link anchors
 s{\[ ([\w -]+) \] \[\w*\] }{$1}gx;
+
+# Drop link targets
+s{^ \[ .* \n}{}gmx;
 
 # Coalesce blanks
 s{\n\n\n}{\n\n}gx;
