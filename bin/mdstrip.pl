@@ -17,7 +17,7 @@ s{\[ ([\w -]+) \] \[\w*\] }{$1}gx;
 s{^ \[ .* \n}{}gmx;
 
 # Coalesce blanks
-s{\n\n\n}{\n\n}gx;
+s{\n\n\n+}{\n\n}gx;
 
 # Drop backticks
 s{\`}{}gx;
